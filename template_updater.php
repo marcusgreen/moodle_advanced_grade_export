@@ -120,8 +120,8 @@ if (!defined('MOODLE_INTERNAL'))
 				$rec->name=$fields[$i][1];
 				$rec->length=$fields[$i][2];
 				$rec->number=$i;
-				$rec->type=$DB->get_field_sql('select id from {advanced_grade_export_fields_type} where name="'.$fields[$i][0].'"');
-				$DB->insert_record('advanced_grade_export_template_fields',$rec);
+				$rec->type=$DB->get_field_sql('select id from {adv_grade_exp_fields_type} where name="'.$fields[$i][0].'"');
+				$DB->insert_record('adv_grade_exp_tpl_fields',$rec);
 			} else {
 				$j++;
 			}
