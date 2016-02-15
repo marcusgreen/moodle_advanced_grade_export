@@ -31,7 +31,7 @@ require_login($course);
 $context = get_context_instance(CONTEXT_COURSE, $id);
 
 require_capability('moodle/grade:export', $context);
-require_capability('gradeexport/advanced_grade_export:view', $context);
+//mavg:require_capability('gradeexport/advanced_grade_export:view', $context);
 
 print_grade_page_head($COURSE->id, 'export', 'advanced_grade_export', get_string('pluginname', 'gradeexport_advanced_grade_export'));
 
