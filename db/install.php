@@ -21,7 +21,7 @@ function xmldb_gradeexport_advanced_grade_export_install() {
 	foreach ($arr as $k) {
 		unset($rec);
 		$rec->name = $k;
-		$result = $result && $DB->insert_record('advanced_grade_export_fields_type', $rec);
+		$result = $result && $DB->insert_record('adv_grade_exp_fields_type', $rec);
 	}
 
 	return $result;
