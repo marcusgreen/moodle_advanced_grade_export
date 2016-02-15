@@ -71,10 +71,16 @@ class advanced_grade_export_form extends moodleform {
 		for ($i=1; $i <9 ; $i++) { 
             $mform->addElement('html','<tr><td>');
             $mform->addElement('text',$names[$i]->name.'_name','',$opts1.'value="'.$this->set_name($fieldsarr[$i]['name'],get_string($names[$i]->name, 'gradeexport_advanced_grade_export')).'"');
+            $mform->setType($names[$i]->name.'_name', PARAM_RAW);
+
             $mform->addElement('html','</td><td>');
-            $mform->addElement('text',$names[$i]->name.'_length','',$opts.' value='.$fieldsarr[$i]['length']);     
+            $mform->addElement('text',$names[$i]->name.'_length','',$opts.' value='.$fieldsarr[$i]['length']);
+            $mform->setType($names[$i]->name.'_length', PARAM_RAW);
+
             $mform->addElement('html','</td><td>');
             $mform->addElement('select',$names[$i]->name.'_order','',$options1,'onchange="choosedOpts(this)"')->setSelected($fieldsarr[$i]['number']);
+            $mform->setType($names[$i]->name.'_order', PARAM_RAW);
+
             $mform->addElement('html','</td></tr>');
         }
 		$mform->addElement('html','</table>');
@@ -149,7 +155,7 @@ class advanced_grade_export_form extends moodleform {
 
         if ($grade_items = $gseq->items) {
             $needs_multiselect = false;
-            $canviewhidden = has_capability('moodle/grade:viewhidden', get_context_instance(CONTEXT_COURSE, $COURSE->id));
+            $canviewhidden = has_capability('moodle/grade:viewhidden',context_course::instance($COURSE->id));
 
 			$mform->addElement('html','<table class="grade_elements">');
             foreach ($grade_items as $grade_item) {
@@ -167,7 +173,9 @@ class advanced_grade_export_form extends moodleform {
 				  $mform->setDefault('itemids['.$grade_item->id.']', 1);
 				  
 				  $mform->addElement('html','</td><td style="width:100px">');
-				  $mform->addElement('text','ed_'.'itemids['.$grade_item->id.']','');;
+				  $mform->addElement('text','ed_'.'itemids['.$grade_item->id.']','');
+                                  $mform->setType('ed_'.'itemids['.$grade_item->id.']',PARAM_RAW);
+                                  
 				  $mform->addElement('html','</td><td style="width:30px">');
 				  $mform->addElement('select','sel_'.'itemids['.$grade_item->id.']','',$options1,'onchange="choosedOpts(this)"');
 				  $mform->addElement('html','</td></tr>');
