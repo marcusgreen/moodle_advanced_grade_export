@@ -22,9 +22,9 @@ class addtemplate extends moodleform
             $features = array();
         }
 		$this->_customdata['tid']>0 && $this->_customdata['mode'] != 5 ? $md=3 : $md=2;
-		$headfoot=$DB->get_record('advanced_grade_export_template',array('id'=>$this->_customdata['tid']),'*');
-		$names=$DB->get_records('advanced_grade_export_fields_type');
-		$fields=$DB->get_records('advanced_grade_export_template_fields',array('templateid'=>$this->_customdata['tid']));
+		$headfoot=$DB->get_record('adv_grade_exp_tpl',array('id'=>$this->_customdata['tid']),'*');
+		$names=$DB->get_records('adv_grade_exp_fields_type');
+		$fields=$DB->get_records('adv_grade_exp_tpl_fields',array('templateid'=>$this->_customdata['tid']));
 		$fieldsarr=array();
 		foreach ($fields as $field)
 		{
