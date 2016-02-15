@@ -60,7 +60,7 @@ require_login($course);
 $context = get_context_instance(CONTEXT_COURSE, $id);
 
 require_capability('moodle/grade:export', $context);
-require_capability('gradeexport/advanced_grade_export:view', $context);
+//mavg:require_capability('gradeexport/advanced_grade_export:view', $context);
 
 if (groups_get_course_groupmode($COURSE) == SEPARATEGROUPS and !has_capability('moodle/site:accessallgroups', $context)) {
     if (!groups_is_member($groupid, $USER->id)) {
