@@ -28,7 +28,8 @@ if (!$course = $DB->get_record('course', array('id'=>$id))) {
 }
 
 require_login($course);
-$context = get_context_instance(CONTEXT_COURSE, $id);
+//$context = get_context_instance(CONTEXT_COURSE, $id);
+$context= context_course::instance($id);
 
 require_capability('moodle/grade:export', $context);
 //mavg:require_capability('gradeexport/advanced_grade_export:view', $context);
@@ -65,7 +66,7 @@ if ($data = $mform->get_data()) {
 
     // print the grades on screen for feedbacks
 	$export->process_form($data);
-	$export->print_for_groups();
+    	$export->print_for_groups();
 	$export->display_my_preview();
     echo $OUTPUT->footer();
     exit;
