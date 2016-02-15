@@ -37,7 +37,7 @@ class advanced_grade_export_form extends moodleform {
 		$output = '';
 		$output .= '<div style="position:absolute;z-index:100;top:160px;left:85%;margin-right:10px;"><a href="templates.php?id='.$COURSE->id.'&amp;mode=0">'
             .get_string('go_to_templates','gradeexport_advanced_grade_export').'</a><br>';
-        $result = $DB->get_records('advanced_grade_export_template',array('course'=>$COURSE->id),null,'name,id');
+        $result = $DB->get_records('adv_grade_exp_tpl',array('course'=>$COURSE->id),null,'name,id');
         $output .= '<ul>';
         foreach ($result as $name=>$id)
           {
@@ -46,9 +46,9 @@ class advanced_grade_export_form extends moodleform {
           }
         $output .= '</ul></div>';
 		$mform->addElement('html', $output);		
-        $headfoot=$DB->get_record('advanced_grade_export_template',array('id'=>$tid),'*');
-        $fields=$DB->get_records('advanced_grade_export_template_fields',array('templateid'=>$tid));
-        $names=$DB->get_records('advanced_grade_export_fields_type');
+        $headfoot=$DB->get_record('adv_grade_exp_tpl',array('id'=>$tid),'*');
+        $fields=$DB->get_records('adv_grade_exp_tpl_fields',array('templateid'=>$tid));
+        $names=$DB->get_records('adv_grade_exp_fields_type');
         $fieldsarr=array();
         foreach ($fields as $field)
         {
