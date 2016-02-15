@@ -142,7 +142,7 @@ class advanced_grade_export extends grade_export_abstract {
         echo '<tr style="font-weight:bold">';
 		$col_count=0;
 		foreach ($this->exp_cols as $index=>$unused)
-		  $index>$col_count?$col_count=$index:$col_count;
+		$index>$col_count?$col_count=$index:$col_count;
 		!empty($this->sel_itemids) && max($this->sel_itemids)>$col_count?$col_count=max($this->sel_itemids):$col_count;
 		for ($i=1;$i<=$col_count;$i++)
 		{
